@@ -1,0 +1,15 @@
+# Default Configuration File
+
+#Set the amount of people you would like to be able to join.
+MaxPlayers: 20
+
+#Groups and Ranks
+#List the groups from Highest preference to lowest preference.
+Groups:
+  - Owner
+  - default
+
+
+#Language and messages
+PreJoinKickMessage: Higher ranks have this server full!! If you would like to move your name up on the VIP list visit our shop!
+KickPlayerMessage: A higher rank has joined and due to the server being full you have been kicked. If you would like to join the VIP list visit our shop!
