@@ -74,6 +74,17 @@ public class groupGetter {
 			return false;
 		}
 	}
+	
+	public boolean delGroup(String g) {
+		if(main.getConfig().contains("Groups."+g)){
+			main.getConfig().set("Groups."+g, null);
+			main.saveConfig();
+			main.reloadConfig();
+			return true;
+		}
+		return false;
+	}
+	
 	public List<String> getGroupList(){
 		Map<String, Object> groups = makeGroupList();
 		for(String s: groups.keySet()){

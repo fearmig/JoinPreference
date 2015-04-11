@@ -27,6 +27,15 @@ public class commands implements CommandExecutor{
 				}
 			}
 		}
+		if(args[0].equalsIgnoreCase("delgroup")){
+			if(args.length==2){
+				if(sender instanceof Player){
+					Player p = (Player) sender;
+					if(gg.delGroup(args[1]))
+						p.sendMessage("Group succesfully deleted.");
+				}
+			}
+		}
 		if(args[0].equalsIgnoreCase("setgrouprank")){
 			if(args.length==3){
 				if(sender instanceof Player){
@@ -53,7 +62,8 @@ public class commands implements CommandExecutor{
 				if(sender instanceof Player){
 					Player p = (Player) sender;
 					p.sendMessage(ChatColor.GOLD + "Join Preference Help: " + "\n" + "\n" + ChatColor.RED + "/jpref addGroup (groupName) (rank)" + 
-							ChatColor.WHITE + "     Adds a group and the group's rank." + "\n" + ChatColor.RED + "/jpref setGroupRank (groupName) (rank)" +
+							ChatColor.WHITE + "     Adds a group and the group's rank." + "\n" + ChatColor.RED + "/jpref delGroup (groupName)"+ 
+							ChatColor.WHITE + "     Remove a group from the config." + "\n" + ChatColor.RED + "/jpref setGroupRank (groupName) (rank)" +
 							ChatColor.WHITE + "     Change an existing groups rank." + "\n" + ChatColor.RED + "/jpref listGroups" +
 							ChatColor.WHITE + "     List all groups and their ranks.");
 				}
