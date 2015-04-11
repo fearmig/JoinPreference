@@ -10,16 +10,18 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class commands implements CommandExecutor{
-	groupGetter gg = new groupGetter(joinPreference.joinP);
+	
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command command,
 			String label, String[] args) {
+		
+		groupGetter gg = new groupGetter(joinPreference.joinP);
+		
 		if(args[0].equalsIgnoreCase("addgroup")){
 			if(args.length==3){
 				if(sender instanceof Player){
 					Player p = (Player) sender;
-					groupGetter gg = new groupGetter(joinPreference.joinP);
 					if(gg.addGroup(args[1], Integer.parseInt(args[2])))
 						p.sendMessage("Group succesfully added.");
 				}
