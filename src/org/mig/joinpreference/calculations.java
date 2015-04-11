@@ -12,10 +12,9 @@ public class calculations {
 		trueMax = main.getConfig().getInt("MaxPlayers");
 	}
 	
-	@SuppressWarnings("deprecation")
 	public boolean isFull(){
 		setTrueMaxPlayers();
-		if(trueMax <= main.getServer().getOnlinePlayers().length){
+		if(trueMax <= playerHandler.players.size()){
 			return true;
 		}
 		else{

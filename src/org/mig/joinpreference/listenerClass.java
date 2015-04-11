@@ -6,6 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerLoginEvent.Result;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 public class listenerClass implements Listener{
 	private final joinPreference main;
@@ -40,5 +41,11 @@ public class listenerClass implements Listener{
 				event.disallow(Result.KICK_OTHER ,main.getConfig().getString("PreJoinKickMessage"));
 			}
 		}
+	}
+	
+	@EventHandler
+	public void onLeave(PlayerQuitEvent event){
+		playerHandler ph = new playerHandler(main);
+		ph.removePlayer(event.getPlayer());
 	}
 }

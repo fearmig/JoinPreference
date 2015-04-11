@@ -26,7 +26,7 @@ public class groupGetter {
 	}
 	
 	public Map<String, Object> makeGroupList(){
-		return ((MemorySection) joinPreference.joinP.getConfig().get("Groups")).getValues(false);
+		return ((MemorySection) main.getConfig().get("Groups")).getValues(false);
 	}
 		
 	public String getGroup(Player p){
