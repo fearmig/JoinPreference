@@ -2,7 +2,7 @@ name: JoinPreference
 description: Gives preference in a full server to designated groups.
 author: FearMig
 website: www.GorillaCraft.com
-version: 1.1
+version: 1.2
 main: org.mig.joinpreference.joinPreference
 
 commands:

@@ -26,9 +26,9 @@ public class listenerClass implements Listener{
 		groupGetter g = new groupGetter(main, event.getPlayer());
 		playerHandler p = new playerHandler(main);
 		if(c.isFull()){
-			if(g.getPlayerRank()!=-1){
+			if(g.getGroupRank(g.getPlayerGroup())>0){
 				Player temp;
-				temp = p.findLowerRank(g.getPlayerRank());
+				temp = p.findLowerRank(g.getGroupRank(g.getPlayerGroup()));
 				if(temp!=null){
 					p.kickPlayer(temp);
 				}

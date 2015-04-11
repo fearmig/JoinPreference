@@ -4,10 +4,10 @@
 MaxPlayers: 20
 
 #Groups and Ranks
-#List the groups from Highest preference to lowest preference.
+#List the groups and their rank. The larger the number the Higher the rank.
 Groups:
-  - Owner
-  - default
+  Owner: 1
+  default: 0 
 
 
 #Language and messages
