@@ -7,17 +7,18 @@ import java.util.Map;
 import org.bukkit.configuration.MemorySection;
 import org.bukkit.entity.Player;
 
-public class groupGetter {
+//Used to get the group of the player and deal with groups in general
+public class GroupGetter {
 	private String group;
 	private List <String> groupList = new ArrayList<>();
 	
-	private final joinPreference main;
+	private final JoinPreference main;
 	
-	public groupGetter(joinPreference jp){
+	//constructors
+	public GroupGetter(JoinPreference jp){
 		this.main = jp;
 	}
-	
- 	public groupGetter(joinPreference jp, Player p){
+ 	public GroupGetter(JoinPreference jp, Player p){
  		this.main = jp;
  		makeGroupList();
  		if(p!=null){
@@ -25,10 +26,12 @@ public class groupGetter {
  		}
 	}
 	
+ 	//return a list of the groups that are listed in the config
 	public Map<String, Object> makeGroupList(){
 		return ((MemorySection) main.getConfig().get("Groups")).getValues(false);
 	}
 		
+	//get a players group and if none listed return default
 	public String getGroup(Player p){
 		Map<String, Object> groups = makeGroupList();
 		for(String s: groups.keySet()){
@@ -39,30 +42,27 @@ public class groupGetter {
 		return "default";
 	}
 	
+	//set a groups rank in the preference order
 	public void setGroupRank(String g, int i){
 		main.getConfig().set("Groups."+g, i);
 		main.saveConfig();
 		main.reloadConfig();
 	}
 	
-	public int getRank(String g){
-		for(int i = 0; i < groupList.size(); i++){
-			if(groupList.get(i).equals(g))
-				return i;		
-		}
-		return -1;
-	}
-	
+	//return a players group
 	public String getPlayerGroup(){
 		return group;
 	}
 	
+	//return a groups rank
 	public int getGroupRank(String g){
 		if(main.getConfig().contains("Groups."+g))
 			return (int) main.getConfig().get("Groups."+g);
 		return 0;
 	}
 	
+	
+	//add a group to the config
 	public boolean addGroup(String g, int r){
 		if(!main.getConfig().contains("Groups."+g)){
 			main.getConfig().set("Groups."+ g, r);
@@ -75,6 +75,7 @@ public class groupGetter {
 		}
 	}
 	
+	//delete a group from the config
 	public boolean delGroup(String g) {
 		if(main.getConfig().contains("Groups."+g)){
 			main.getConfig().set("Groups."+g, null);
@@ -85,6 +86,7 @@ public class groupGetter {
 		return false;
 	}
 	
+	//return a list of all the groups in the config
 	public List<String> getGroupList(){
 		Map<String, Object> groups = makeGroupList();
 		for(String s: groups.keySet()){

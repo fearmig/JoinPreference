@@ -9,15 +9,17 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class commands implements CommandExecutor{
+//This class contains all the commands that a player can execute
+public class Commands implements CommandExecutor{
 	
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command command,
 			String label, String[] args) {
 		
-		groupGetter gg = new groupGetter(joinPreference.joinP);
+		GroupGetter gg = new GroupGetter(JoinPreference.joinP);
 		
+		//add a group to the config
 		if(args[0].equalsIgnoreCase("addgroup")){
 			if(args.length==3){
 				if(sender instanceof Player){
@@ -27,6 +29,8 @@ public class commands implements CommandExecutor{
 				}
 			}
 		}
+		
+		//delete a group from the config
 		if(args[0].equalsIgnoreCase("delgroup")){
 			if(args.length==2){
 				if(sender instanceof Player){
@@ -36,6 +40,8 @@ public class commands implements CommandExecutor{
 				}
 			}
 		}
+		
+		//set a groups rank
 		if(args[0].equalsIgnoreCase("setgrouprank")){
 			if(args.length==3){
 				if(sender instanceof Player){
@@ -45,6 +51,8 @@ public class commands implements CommandExecutor{
 				}
 			}
 		}
+		
+		//list all the groups
 		if(args[0].equalsIgnoreCase("listgroups")){
 			if(args.length==1){
 				if(sender instanceof Player){
@@ -52,11 +60,13 @@ public class commands implements CommandExecutor{
 					Player p = (Player) sender;
 					p.sendMessage("Groups: Rank");
 					for(String s: groups.keySet()){
-						p.sendMessage(s + ": " + joinPreference.joinP.getConfig().getInt("Groups."+s));
+						p.sendMessage(s + ": " + JoinPreference.joinP.getConfig().getInt("Groups."+s));
 					}
 				}
 			}
 		}
+		
+		//display a help message to the player
 		if(args[0].equalsIgnoreCase("help")){
 			if(args.length==1){
 				if(sender instanceof Player){
