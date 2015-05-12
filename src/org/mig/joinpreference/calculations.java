@@ -1,20 +1,25 @@
 package org.mig.joinpreference;
 
-public class calculations {
-	private static int trueMax;
-	private final joinPreference main;
+//This class was created to do any calculations made.
+public class Calculations {
 	
-	public calculations(joinPreference p){
+	private static int trueMax;
+	private final JoinPreference main;
+	
+	//constructor
+	public Calculations(JoinPreference p){
 		this.main = p;
 	}
 	
+	//set the Max amount of players allowed into the server
 	public void setTrueMaxPlayers(){
 		trueMax = main.getConfig().getInt("MaxPlayers");
 	}
 	
+	//return if the server is full of players.
 	public boolean isFull(){
 		setTrueMaxPlayers();
-		if(trueMax <= playerHandler.players.size()){
+		if(trueMax <= PlayerHandler.players.size()){
 			return true;
 		}
 		else{
